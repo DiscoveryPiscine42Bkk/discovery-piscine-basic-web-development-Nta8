@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <title>เปลี่ยนสีพื้นหลัง</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      text-align: center;
+      padding-top: 100px;
+      transition: background-color 0.8s ease; /* ทำให้เปลี่ยนสีนุ่มนวล */
+    }
+
+    button {
+      padding: 15px 30px;
+      font-size: 16px;
+      cursor: pointer;
+      background-color: #fff;
+      border: 2px solid #444;
+      border-radius: 8px;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    button:hover {
+      background-color: #444;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+
+  <button onclick="changeToRainbowColor()">เปลี่ยนสีพื้นหลัง</button>
+
+  <script>
+    function changeToRainbowColor() {
+      const rainbowColors = [
+        "red",     // แดง
+        "orange",  // ส้ม
+        "yellow",  // เหลือง
+        "green",   // เขียว
+        "blue",    // น้ำเงิน
+        "indigo",  // คราม
+        "violet"   // ม่วง
+      ];
+
+      const randomIndex = Math.floor(Math.random() * rainbowColors.length);
+      const selectedColor = rainbowColors[randomIndex];
+      document.body.style.backgroundColor = selectedColor;
+    }
+  </script>
+
+</body>
+</html>
