@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <title>เปลี่ยนสีพื้นหลัง</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      text-align: center;
+      padding-top: 100px;
+      transition: background-color 0.8s ease;
+    }
+
+    button {
+      padding: 15px 30px;
+      font-size: 16px;
+      cursor: pointer;
+      background-color: #fff;
+      border: 2px solid #444;
+      border-radius: 8px;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    button:hover {
+      background-color: #444;
+      color: white;
+    }
+  </style>
+  <!-- เพิ่ม jQuery CDN -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+
+  <button id="rainbow-btn">เปลี่ยนสีพื้นหลัง</button>
+
+  <script>
+    $(function() {
+      $('#rainbow-btn').on('click', function() {
+        const rainbowColors = [
+          "red", "orange", "yellow", "green", "blue", "indigo", "violet"
+        ];
+        const randomIndex = Math.floor(Math.random() * rainbowColors.length);
+        const selectedColor = rainbowColors[randomIndex];
+        $('body').css('background-color', selectedColor);
+      });
+    });
+  </script>
+
+</body>
+</html>
