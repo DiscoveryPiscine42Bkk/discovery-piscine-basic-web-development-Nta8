@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <title>🌸 TO DO สไตล์อนิเมะ</title>
+  <link rel="stylesheet" href="อนิเมะ.css">
+  <link href="https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&display=swap" rel="stylesheet">
+  <style>
+   body {
+  font-family: 'Mochiy Pop One', sans-serif;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  padding: 40px;
+  color: #fff;
+  text-align: center;
+}
+
+    h1 {
+      font-size: 2.5rem;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
+      margin-bottom: 20px;
+    }
+
+    button {
+      background-color: #ff66cc;
+      border: none;
+      border-radius: 8px;
+      padding: 12px 24px;
+      font-size: 18px;
+      color: white;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+      transition: all 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #ff3399;
+      transform: scale(1.05);
+    }
+
+    #ft_list {
+      background: rgba(255, 255, 255, 0.8);
+      border-radius: 12px;
+      padding: 20px;
+      width: 350px;
+      margin: 20px auto;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    }
+
+    .todo {
+      background-color: #fff0f5;
+      border: 2px dashed #ff69b4;
+      color: #d63384;
+      padding: 12px;
+      margin-bottom: 10px;
+      border-radius: 10px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    .todo:hover {
+      background-color: #ffe6f0;
+      transform: scale(1.03);
+    }
+  </style>
+</head>
+<body>
+  <h1>🌸 รายการสิ่งที่ต้องทำของคุณ 🌸</h1>
+  <button onclick="addTodo()">➕ เพิ่มภารกิจใหม่</button>
+  <div id="ft_list"></div>
+
+  <script>
+    window.onload = function () {
+      const saved = getCookie("todos");
+      if (saved) {
+        const todos = JSON.parse(saved);
+        todos.forEach(todo => addTodoElement(todo));
+      }
+    };
+
+    function addTodo() {
+      const text = prompt("กรอกภารกิจน่ารัก ๆ ของคุณสิ~ ✨");
+      if (text && text.trim() !== "") {
+        addTodoElement(text.trim());
+        saveTodos();
+      }
+    }
+
+    function addTodoElement(text) {
+      const todoDiv = document.createElement("div");
+      todoDiv.className = "todo";
+      todoDiv.innerText = "📝 " + text;
+
+      todoDiv.onclick = function () {
+        if (confirm("คุณแน่ใจว่าจะลบภารกิจนี้หรือเปล่า? 😢")) {
+          todoDiv.remove();
+          saveTodos();
+        }
+      };
+
+      const list = document.getElementById("ft_list");
+      list.insertBefore(todoDiv, list.firstChild);
+    }
+
+    function saveTodos() {
+      const list = document.getElementById("ft_list");
+      const todos = [];
+      for (const child of list.children) {
+        todos.push(child.innerText.replace("📝 ", ""));
+      }
+      setCookie("todos", JSON.stringify(todos), 365);
+    }
+
+    function setCookie(name, value, days) {
+      const expires = new Date(Date.now() + days * 864e5).toUTCString();
+      document.cookie = name + "=" + encodeURIComponent(value) + "; expires=" + expires + "; path=/";
+    }
+
+    function getCookie(name) {
+      return document.cookie.split("; ").reduce((r, v) => {
+        const parts = v.split("=");
+        return parts[0] === name ? decodeURIComponent(parts[1]) : r
+      }, "");
+    }
+  </script>
+</body>
+</html>

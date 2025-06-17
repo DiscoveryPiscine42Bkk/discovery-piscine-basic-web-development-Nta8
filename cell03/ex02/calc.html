@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <title>เครื่องคิดเลขพื้นฐาน</title>
+</head>
+<body>
+  <h1>เครื่องคิดเลข</h1>
+
+  <!-- ตัวเลขด้านซ้าย -->
+  <input type="text" id="leftOperand" placeholder="ตัวเลขซ้าย" />
+
+  <!-- ตัวดำเนินการ -->
+  <select id="operator">
+    <option value="+">+</option>
+    <option value="-">-</option>
+    <option value="*">*</option>
+    <option value="/">/</option>
+    <option value="%">%</option>
+  </select>
+
+  <!-- ตัวเลขด้านขวา -->
+  <input type="text" id="rightOperand" placeholder="ตัวเลขขวา" />
+
+  <!-- ปุ่มคำนวณ -->
+  <input type="submit" value="ลองเลย!" onclick="calculate()" />
+
+  <script>
+    function isPositiveInteger(value) {
+      return /^\d+$/.test(value);
+    }
+
+    function calculate() {
+      const left = document.getElementById('leftOperand').value;
+      const right = document.getElementById('rightOperand').value;
+      const operator = document.getElementById('operator').value;
+
+      if (!isPositiveInteger(left) || !isPositiveInteger(right)) {
+        alert('Error :(');
+        return;
+      }
+
+      const a = parseInt(left);
+      const b = parseInt(right);
+
+      if ((operator === '/' || operator === '%') && b === 0) {
+        alert("It's over 9000!");
+        console.log("It's over 9000!");
+        return;
+      }
+
+      let result;
+      switch (operator) {
+        case '+': result = a + b; break;
+        case '-': result = a - b; break;
+        case '*': result = a * b; break;
+        case '/': result = a / b; break;
+        case '%': result = a % b; break;
+        default:
+          alert('ตัวดำเนินการไม่ถูกต้อง');
+          return;
+      }
+
+      alert('ผลลัพธ์: ' + result);
+      console.log('ผลลัพธ์:', result);
+    }
+
+    // เตือนทุก 30 วินาที
+    setInterval(() => {
+      alert('Please, use me...');
+    }, 30000);
+  </script>
+</body>
+</html>
