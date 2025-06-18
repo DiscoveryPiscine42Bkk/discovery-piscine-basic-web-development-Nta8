@@ -1,3 +1,30 @@
+body {
+  scroll-behavior: smooth;
+  background-image: url('https://images8.alphacoders.com/132/thumb-1920-1328868.jpeg'); /* ภาพพื้นหลังอนิเมะหรือภาพสวยๆ */
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.transparent-section {
+  background-color: rgba(0, 0, 0, 0.3); /* สีดำโปร่งใส 30% */
+  color: white; /* สีตัวหนังสือให้อ่านง่าย */
+  border-radius: 10px;
+  margin: 20px;
+  padding: 40px 20px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  backdrop-filter: blur(5px); /* เบลอพื้นหลังเบาๆ */
+}
+
+.profile-img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 16px;
+  border: 3px solid #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+}
 .profile-img {
   width: 200px;          /* ความกว้างของรูป */
   height: 200px;         /* ความสูงของรูป */
@@ -8,15 +35,16 @@
 }
 
 #about {
-  background-color: #2b8b97;
+  background-color: rgba(0, 0, 0, 0.3); /* สีพื้นหลังโปร่งใส */
+  color: white; /* สีตัวหนังสือให้อ่านง่าย */
 }
 
 #about h2 {
-  color: #2df2db;
+  color: #ffffff;
 }
 
 #about p {
-  color: #004d40;
+  color: #ffffff;
 }
 
 .profile-img {
@@ -27,5 +55,99 @@
  background: linear-gradient(to right, rgba(255,0,0,0.8), rgba(0,0,255,0.8));
   backdrop-filter: blur(5px); /* เพิ่มเบลอด้านหลัง (optional) */
 }
+
+.video-container {
+  position: relative;
+  padding-bottom: 56.25%; /* อัตราส่วน 16:9 */
+  height: 0;
+  overflow: hidden;
+  max-width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.4);
+  margin: 20px auto;
+}
+
+.video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+li a {
+  text-decoration: none;
+  color: #ffffff;
+}
+li a:hover {
+  text-decoration: underline;
+}
+
+.label {
+  font-weight: bold;
+  color: #15d6e7; /* สีฟ้า */
+  margin-right: 8px;
+  font-size: 1.3rem; /* ขนาดตัวอักษร */
+}
+
+/* Container Styling */
+.contact-section {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(227, 220, 220, 0.1);
+  text-align: center;
+}
+
+/* Header */
+.contact-section h3 {
+  font-size: 1.8em;
+  margin-bottom: 20px;
+  color: #fdfeff;
+}
+
+/* List Styling */
+.contact-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.contact-list li {
+  font-size: 1.1em;
+  color: #ffffff;
+  margin-bottom: 12px;
+  word-break: break-word;
+}
+
+/* Links */
+.contact-list a {
+  color: #f1b151;
+  text-decoration: none;
+}
+.contact-list a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive (optional, but useful on small devices) */
+@media (max-width: 600px) {
+  .contact-section {
+    padding: 15px;
+  }
+
+  .contact-section h3 {
+    font-size: 1.5em;
+  }
+
+  .contact-list li {
+    font-size: 1em;
+  }
+}
+
 
 
