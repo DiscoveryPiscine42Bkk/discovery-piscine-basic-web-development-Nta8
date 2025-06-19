@@ -2,111 +2,221 @@
 <html lang="th">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>โชว์วิดีโอผลงาน</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>เว็บส่วนตัว</title>
+  <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="resume2.css">
+  
   <style>
-    body {
-      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-      background: #121212;
-      color: #fff;
+    * {
       margin: 0;
-      padding: 40px 20px;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
     }
 
-    h2 {
-      text-align: center;
-      margin-bottom: 40px;
+    body {
+      font-family: 'Kanit', sans-serif;
+      color: #fff;
+    }
+
+    /* วิดีโอพื้นหลัง */
+    #bg-video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+      opacity: 5;
+    }
+
+    /* เมนู */
+    nav {
+      background: rgba(0, 0, 0, 0.6);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(8px);
+    }
+
+    nav .logo a {
+      color: #fff;
+      font-size: 1.6rem;
       font-weight: 700;
-      letter-spacing: 1px;
+      text-decoration: none;
     }
 
-    .video-gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 30px;
-      max-width: 1000px;
-      margin: 0 auto;
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
     }
 
-    .video-card {
-      background: #222;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 6px 15px rgba(0,0,0,0.5);
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1.05rem;
+      transition: 0.3s ease;
+      position: relative;
+    }
+
+    nav ul li a::after {
+      content: '';
+      width: 0%;
+      height: 2px;
+      background: #fff;
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      transition: 0.3s ease;
+    }
+
+    nav ul li a:hover::after {
+      width: 100%;
+    }
+
+    /* ส่วนต่าง ๆ */
+    section {
+      padding: 100px 20px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(4px);
+    }
+
+    .profile-img {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+      margin-bottom: 20px;
       transition: transform 0.3s ease;
     }
 
-    .video-card:hover {
+    .profile-img:hover {
       transform: scale(1.05);
-      box-shadow: 0 10px 25px rgba(255, 255, 255, 0.3);
     }
 
-    .video-wrapper {
-      position: relative;
-      width: 100%;
-      padding-top: 56.25%; /* 16:9 Aspect Ratio */
-      overflow: hidden;
+    h2 {
+      font-size: 2.4rem;
+      color: #faecec;
+      margin-bottom: 15px;
     }
 
-    .video-wrapper iframe,
-    .video-wrapper video {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%;
-      height: 100%;
+    p {
+      max-width: 700px;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #ffffff;
+    }
+
+    /* ปุ่ม */
+    .btn {
+      margin-top: 20px;
+      background: #8e2de2;
+      color: #fff;
+      padding: 10px 25px;
       border: none;
+      border-radius: 30px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: 0.3s ease;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.3);
     }
 
-    .video-info {
-      padding: 15px 20px;
+    .btn:hover {
+      background: #4a00e0;
+      transform: translateY(-2px);
     }
 
-    .video-info h3 {
-      margin: 0 0 8px 0;
-      font-size: 1.2rem;
-      font-weight: 600;
+    /* Responsive */
+    .menu-toggle {
+      display: none;
+      font-size: 1.8rem;
+      color: #fff;
+      cursor: pointer;
     }
 
-    .video-info p {
-      margin: 0;
-      font-size: 0.95rem;
-      color: #bbb;
+    @media (max-width: 768px) {
+      nav ul {
+        display: none;
+        flex-direction: column;
+        background: rgba(0,0,0,0.8);
+        position: absolute;
+        top: 60px;
+        right: 20px;
+        width: 200px;
+        padding: 1rem;
+        border-radius: 8px;
+      }
+
+      nav ul.active {
+        display: flex;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
     }
   </style>
 </head>
 <body>
-  <h2>ผลงานวิดีโอของฉัน</h2>
 
-  <div class="video-gallery">
-    <!-- วิดีโอ YouTube -->
-    <div class="video-card">
-      <div class="video-wrapper">
-        <iframe src="https://www.youtube.com/embed/7rlhgG4bsOY?start=72" allowfullscreen
-          title="YouTube Video"></iframe>
-      </div>
-      <div class="video-info">
-        <h3>วิดีโอโปรเจกต์ YouTube</h3>
-        <p>ตัวอย่างวิดีโอโปรเจกต์ที่อัปโหลดบน YouTube</p>
-      </div>
-    </div>
+  <!-- วิดีโอพื้นหลัง -->
+  <video autoplay muted loop id="bg-video">
+    <source src="myvideo.mp4.mp4" type="video/mp4">
+  </video>
 
-    <!-- วิดีโอจากไฟล์ในเครื่อง -->
-    <div class="video-card">
-      <div class="video-wrapper">
-        <video controls>
-          <source src="myvideo.mp4" type="video/mp4" />
-          วิดีโอไม่รองรับในเบราว์เซอร์นี้
-        </video>
-      </div>
-      <div class="video-info">
-        <h3>วิดีโอผลงานในเครื่อง</h3>
-        <p>ตัวอย่างวิดีโอที่เก็บไว้ในเครื่อง</p>
-      </div>
-    </div>
+  <!-- เมนูนำทาง -->
+  <nav>
+    <div class="logo"><a href="index.html">🌟 MyPortfolio</a></div>
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+    <ul id="nav-links">
+      <li><a href="#profile">โปรไฟล์</a></li>
+      <li><a href="#about">ประวัติ</a></li>
+      <li><a href="#contact">ติดต่อ</a></li>
+    </ul>
+  </nav>
 
-    <!-- เพิ่มวิดีโอเพิ่มเติมได้ตามต้องการ -->
-  </div>
+  <section id="profile" class="transparent-section">
+    <img src="https://i.pinimg.com/736x/25/64/18/25641830e0731a60bf7f8a83c6ee8d2e.jpg" alt="Profile" class="profile-img">
+    <h2>เจมส์</h2>
+    <p><span class="label">คณะ:</span> ครุศาสตร์อุตสาหกรรมและเทคโนโลยี</p>
+    <p><span class="label">รหัสนักศึกษา :</span> 68030267</p>
+    <p><span class="label">สาขา:</span>เทคโนโลยีคอมพิวเตอร์</p>
+  </section>
+
+  <section id="about" class="transparent-section">
+     <div class="container">
+       <h2>ประวัติส่วนตัว</h2>
+       <p>แนะนำตัว การศึกษา ความสามารถ ภาษา ความสนใจ และประสบการณ์ของคุณในแบบที่อ่านง่าย น่าสนใจ</p>
+     <div>
+  </section>
+
+  <section id="contact" class="transparent-section">
+  <div class="container">
+    <h2>ช่องทางติดต่อ</h2>
+    <p>📧 Email: example@email.com<br>📞 โทร: 098-765-4321</p>
+  <div>
+  </section>
+
+  <script>
+    function toggleMenu() {
+      const navLinks = document.getElementById('nav-links');
+      navLinks.classList.toggle('active');
+    }
+  </script>
 </body>
 </html>
-
-

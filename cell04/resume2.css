@@ -1,0 +1,48 @@
+
+#bg-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  min-height: 100%;
+  z-index: -1;
+  object-fit: cover;
+  
+}
+
+.transparent-section {
+  background-color: rgba(0, 0, 0, 0.3); /* สีดำโปร่งใส 30% */
+  color: rgb(4, 4, 4); /* สีตัวหนังสือให้อ่านง่าย */
+  border-radius: 10px;
+  margin: 20px;
+  padding: 40px 20px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  backdrop-filter: blur(5px); /* เบลอพื้นหลังเบาๆ */
+}
+
+.profile-img {
+  width: 200px;          /* ความกว้างของรูป */
+  height: 200px;         /* ความสูงของรูป */
+  object-fit: cover;     /* ตัดส่วนเกินให้ภาพไม่บิดเบี้ยว */
+  border-radius: 50%;    /* ทำให้เป็นวงกลม */
+  display: block;
+  margin: 0 auto 1rem;   /* จัดให้อยู่ตรงกลางและเว้นขอบล่าง */
+}
+
+.container {
+  max-width: 900px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.label {
+  font-weight: bold;
+  color: #fba039; /* สีฟ้า */
+  margin-right: 8px;
+  font-size: 1.3rem; /* ขนาดตัวอักษร */
+}
+
+
+
+

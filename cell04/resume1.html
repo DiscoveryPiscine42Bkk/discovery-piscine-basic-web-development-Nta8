@@ -23,30 +23,120 @@
 </head>
 <body>
 
-<!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-dark  custom-navbar">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="index.html">My profile</a>
-    <div>
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0 d-flex flex-row">
-        <li class="nav-item px-2">
-          <a class="index.html" href="#about">About</a>
 
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top animator-navbar">
+  <div class="container-fluid">
+    <a class="navbar-brand fw-bold animated-logo" href="index.html">🎬 Animator Team</a>
+    <!-- ปุ่ม Hamburger สำหรับมือถือ -->
+    <button 
+      class="navbar-toggler" 
+      type="button" 
+      data-bs-toggle="collapse" 
+      data-bs-target="#navbarNav" 
+      aria-controls="navbarNav" 
+      aria-expanded="false" 
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    
+    
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav d-flex flex-row gap-4">
+        <li class="nav-item animated-link delay-1">
+          <a class="nav-link" href="#about">About</a>
         </li>
-        <li class="nav-item px-2">
-          <a class="nav-link" href="#experience">Experience</a>
+        <li class="nav-item animated-link delay-2">
+          <a class="nav-link" href="#experience">🎞️ Experience</a>
         </li>
-         </li>
-        <li class="nav-item px-2">
-          <a class="nav-link" href="#Show video of your work">Show video of your work</a>
+        <li class="nav-item animated-link delay-3">
+          <a class="nav-link" href="#contact">📬 Work Video contact</a>
         </li>
-        <li class="nav-item px-2">
-          <a class="nav-link" href="#contact">Contact</a>
+        <li class="nav-item animated-link delay-4">
+          <a class="nav-link" href="#Show video of your work">📹 Work Video </a>
         </li>
       </ul>
     </div>
   </div>
 </nav>
+
+
+
+<style>
+/* Navbar Theme */
+.animator-navbar {
+  background: linear-gradient(90deg, #ff6f61, #6a0572);
+  font-family: 'Poppins', sans-serif;
+  animation: fadeInTop 1.2s ease-in-out;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.4);
+}
+
+/* Logo Animation */
+.animated-logo {
+  animation: popIn 1s ease forwards;
+}
+
+/* Nav Link Base */
+.animator-navbar .nav-link {
+  color: #fff;
+  transition: all 0.4s ease;
+  font-size: 1.1rem;
+  font-weight: 600;
+  position: relative;
+}
+
+/* Hover Effects */
+.animator-navbar .nav-link:hover {
+  color: #ffe600;
+  transform: scale(1.1) rotate(-1deg);
+  text-shadow: 1px 1px 5px rgba(255, 255, 255, 0.3);
+}
+
+/* Fade In Keyframes */
+@keyframes fadeInTop {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Logo Pop Animation */
+@keyframes popIn {
+  0% {
+    transform: scale(0.6);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Staggered Link Animation */
+.animated-link {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: linkFadeIn 0.6s ease forwards;
+}
+
+.animated-link.delay-1 { animation-delay: 0.4s; }
+.animated-link.delay-2 { animation-delay: 0.6s; }
+.animated-link.delay-3 { animation-delay: 0.8s; }
+.animated-link.delay-4 { animation-delay: 1s; }
+
+@keyframes linkFadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+</style>
+
 
 <!-- Sections -->
 <section id="about" class="transparent-section">
@@ -66,6 +156,7 @@
 <section id="experience" class="transparent-section">
   <div class="container">
     <h3>Experience & Skills</h3>
+    <p>I'm a passionate 3D animator with a focus on creating engaging and dynamic animations. My journey in animation started with a fascination for storytelling through visuals, and I've honed my skills in various animation techniques.</p>
     <div class="video-container">
   <iframe width="560" height="315"
     src="https://www.youtube.com/embed/7rlhgG4bsOY?start=72"
@@ -76,9 +167,7 @@
   </iframe>
 </div>
 
-    <ul>
-      <li> </li>
-    </ul>
+  
     <h4>Skills:</h4>
     <div style="display: flex; align-items: center; gap: 8px;">
   <img src="https://www.blender.org/wp-content/uploads/2020/07/blender_community_logo_white-394x512.png" alt="Blender Logo" height="25">
@@ -182,8 +271,8 @@
         </video>
       </div>
       <div class="video-info">
-        <h3>วิดีโอผลงานในเครื่อง</h3>
-        <p>ตัวอย่างวิดีโอที่เก็บไว้ในเครื่อง</p>
+        <h3>วิดีโอผลงาน 3D</h3>
+        <p>moji cat 2D+3D</p>
       </div>
     </div>
    
@@ -197,14 +286,18 @@
         </video>
       </div>
       <div class="video-info">
-        <h3>วิดีโอผลงานในเครื่อง</h3>
-        <p>ตัวอย่างวิดีโอที่เก็บไว้ในเครื่อง</p>
+        <h3>วิดีโอผลงาน 3D</h3>
+        <p>STAR WARS  LEGO ANIMATION</p>
       </div>
     </div>
 
 
   </div>
 </section>
+
+<!-- Bootstrap JS + Popper (ทำให้ปุ่มเมนูใช้งานได้) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
 
 </body>
 </html>
